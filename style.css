@@ -1,27 +1,27 @@
 :root {
-  --bg: #f8fafc;
+  --bg: #f4f7f5;
   --panel: #ffffff;
-  --text: #0f172a;
-  --muted: #64748b;
-  --line: #e2e8f0;
-  --primary: #2563eb;
-  --primary-hover: #1d4ed8;
-  --primary-light: #eff6ff;
-  --success: #10b981;
-  --danger: #ef4444;
-  --radius: 16px;
-  --shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.05), 0 0 1px 1px rgba(15, 23, 42, 0.04);
+  --text: #1b2e23;
+  --muted: #5a7364;
+  --line: #d8e2dc;
+  --primary: #3b6e51;       /* Sage Green Utama */
+  --primary-hover: #2f5841; /* Sage Green Gelap */
+  --primary-light: #e8f0ec; /* Sage Green Sangat Muda */
+  --success: #2d8a56;
+  --danger: #d9534f;
+  --radius: 20px;
+  --shadow: 0 10px 30px -5px rgba(59, 110, 81, 0.08), 0 0 1px 1px rgba(59, 110, 81, 0.05);
 }
 
 body.dark {
-  --bg: #030712;
-  --panel: #0b1329;
-  --text: #f8fafc;
-  --muted: #94a3b8;
-  --line: #1e293b;
-  --primary: #3b82f6;
-  --primary-hover: #2563eb;
-  --primary-light: rgba(59, 130, 246, 0.1);
+  --bg: #111a14;
+  --panel: #1a281f;
+  --text: #eaf2ed;
+  --muted: #9ab3a4;
+  --line: #294031;
+  --primary: #55916f;       /* Sage Green Terang untuk Mode Gelap */
+  --primary-hover: #3b6e51;
+  --primary-light: rgba(85, 145, 111, 0.15);
   --shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5), 0 0 1px 1px rgba(255, 255, 255, 0.05);
 }
 
@@ -39,11 +39,11 @@ body {
   overflow-x: hidden;
 }
 
-/* Background gradient glowing blobs */
+/* Background gradient glowing blobs bernuansa segar */
 .bg-blobs { position: fixed; inset: 0; pointer-events: none; z-index: -1; opacity: 0.5; filter: blur(80px); }
 .blob { position: absolute; width: 400px; height: 400px; border-radius: 50%; }
-.blob-1 { top: -100px; left: -100px; background: rgba(37, 99, 235, 0.15); }
-.blob-2 { bottom: -100px; right: -100px; background: rgba(16, 185, 129, 0.1); }
+.blob-1 { top: -100px; left: -100px; background: rgba(59, 110, 81, 0.15); }
+.blob-2 { bottom: -100px; right: -100px; background: rgba(120, 165, 140, 0.1); }
 
 button, input { font: inherit; }
 button { cursor: pointer; border: none; background: none; }
@@ -64,7 +64,7 @@ button:disabled { opacity: 0.5; cursor: not-allowed; }
 }
 
 .brand { display: flex; align-items: center; gap: 12px; }
-.brand-logo { width: 40px; height: 40px; border-radius: 10px; object-fit: cover; box-shadow: 0 4px 12px rgba(37,99,235,0.2); }
+.brand-logo { width: 40px; height: 40px; border-radius: 12px; object-fit: cover; box-shadow: 0 4px 12px rgba(59,110,81,0.2); }
 .brand strong { display: block; font-size: 16px; letter-spacing: -0.01em; }
 .brand small { display: block; color: var(--muted); font-size: 11px; }
 
@@ -78,35 +78,79 @@ button:disabled { opacity: 0.5; cursor: not-allowed; }
   color: var(--primary);
 }
 .backend-badge.checking { background: rgba(234, 179, 8, 0.1); color: #d97706; }
-.backend-badge.online { background: rgba(16, 185, 129, 0.1); color: var(--success); }
-.backend-badge.offline { background: rgba(239, 68, 68, 0.1); color: var(--danger); }
+.backend-badge.online { background: rgba(45, 138, 86, 0.1); color: var(--success); }
+.backend-badge.offline { background: rgba(217, 83, 79, 0.1); color: var(--danger); }
 
 .icon-btn {
   background: var(--panel);
   color: var(--text);
   border: 1px solid var(--line);
-  border-radius: 12px;
-  width: 40px;
-  height: 40px;
+  border-radius: 14px;
+  width: 44px;
+  height: 44px;
   display: grid;
   place-items: center;
   transition: all 0.2s;
 }
 .icon-btn:hover { background: var(--line); }
 
-.shell { max-width: 1100px; width: 100%; margin: auto; padding: 40px 24px 60px; flex: 1; }
+.shell { max-width: 1100px; width: 100%; margin: auto; padding: 30px 20px 60px; flex: 1; }
 
-.hero { max-width: 700px; margin-bottom: 32px; }
+/* Banner Identitas Usaha & Ucapan Terimakasih */
+.business-banner {
+  background: linear-gradient(135deg, var(--primary-light), var(--panel));
+  border-left: 4px solid var(--primary);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.badge-studio {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: var(--primary);
+  background: var(--panel);
+  padding: 4px 10px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.business-banner h2 {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin: 0 0 6px 0;
+}
+
+.contact-info {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 12px 0;
+  opacity: 0.9;
+}
+
+.thank-you-text {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.hero { max-width: 700px; margin-bottom: 28px; }
 .eyebrow { font-size: 11px; font-weight: 800; letter-spacing: 0.15em; color: var(--primary); margin-bottom: 8px; }
-h1 { font-size: clamp(32px, 5vw, 48px); line-height: 1.1; letter-spacing: -0.03em; margin: 0 0 16px; }
+h1 { font-size: clamp(28px, 5vw, 42px); line-height: 1.1; letter-spacing: -0.03em; margin: 0 0 12px; }
 h1 span { color: var(--primary); }
-.hero p { font-size: 16px; color: var(--muted); margin: 0; }
+.hero p { font-size: 15px; color: var(--muted); margin: 0; }
 
 .card {
   background: var(--panel);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  padding: 24px;
+  padding: 22px;
   box-shadow: var(--shadow);
   margin-bottom: 20px;
   transition: transform 0.2s;
@@ -120,8 +164,9 @@ label { font-weight: 600; font-size: 13px; display: block; margin-bottom: 8px; }
 input {
   width: 100%;
   border: 1px solid var(--line);
-  border-radius: 12px;
-  padding: 13px 14px 13px 44px;
+  border-radius: 14px;
+  min-height: 48px;
+  padding: 12px 14px 12px 44px;
   outline: none;
   background: var(--bg);
   color: var(--text);
@@ -131,7 +176,8 @@ input {
 input:focus { border-color: var(--primary); box-shadow: 0 0 0 4px var(--primary-light); background: var(--panel); }
 
 .primary, .secondary {
-  border-radius: 12px;
+  border-radius: 14px;
+  min-height: 48px;
   padding: 12px 20px;
   font-weight: 600;
   font-size: 14px;
@@ -141,19 +187,19 @@ input:focus { border-color: var(--primary); box-shadow: 0 0 0 4px var(--primary-
   gap: 8px;
   transition: all 0.2s;
 }
-.primary { background: var(--primary); color: #fff; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25); }
+.primary { background: var(--primary); color: #fff; box-shadow: 0 4px 12px rgba(59, 110, 81, 0.25); }
 .primary:hover:not(:disabled) { background: var(--primary-hover); transform: translateY(-1px); }
 .secondary { background: var(--panel); border: 1px solid var(--line); color: var(--text); }
 .secondary:hover:not(:disabled) { background: var(--line); }
 
 .folder-head { display: flex; justify-content: space-between; align-items: flex-end; margin: 32px 0 16px; }
-h2 { margin: 0; font-size: 24px; letter-spacing: -0.02em; word-break: break-word; }
+h2 { margin: 0; font-size: 22px; letter-spacing: -0.02em; word-break: break-word; }
 
-.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 20px; }
-.stat { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; display: flex; align-items: center; gap: 14px; box-shadow: var(--shadow); }
-.stat-icon { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; font-size: 18px; background: var(--primary-light); }
-.stat span { display: block; color: var(--muted); font-size: 12px; font-weight: 500; }
-.stat strong { display: block; font-size: 20px; letter-spacing: -0.02em; }
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 20px; }
+.stat { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; display: flex; align-items: center; gap: 12px; box-shadow: var(--shadow); }
+.stat-icon { width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center; font-size: 18px; background: var(--primary-light); }
+.stat span { display: block; color: var(--muted); font-size: 11px; font-weight: 500; }
+.stat strong { display: block; font-size: 18px; letter-spacing: -0.02em; }
 
 .progress-card { background: var(--panel); }
 .progress-head { display: flex; justify-content: space-between; font-weight: 600; font-size: 14px; }
@@ -177,16 +223,16 @@ h2 { margin: 0; font-size: 24px; letter-spacing: -0.02em; word-break: break-word
 .path { word-break: break-all; flex: 1; font-family: ui-monospace, monospace; }
 .size { margin-left: auto; color: var(--muted); white-space: nowrap; font-size: 12px; }
 
-.errors { color: var(--danger); border-color: rgba(239, 68, 68, 0.3); background: rgba(239, 68, 68, 0.03); }
-.error-row { padding: 8px 0; border-bottom: 1px solid rgba(239, 68, 68, 0.15); font-size: 13px; }
+.errors { color: var(--danger); border-color: rgba(217, 83, 79, 0.3); background: rgba(217, 83, 79, 0.03); }
+.error-row { padding: 8px 0; border-bottom: 1px solid rgba(217, 83, 79, 0.15); font-size: 13px; }
 .error-row:last-child { border-bottom: none; }
 
-footer { text-align: center; color: var(--muted); font-size: 12px; padding: 30px; border-top: 1px solid var(--line); margin-top: auto; }
+footer { text-align: center; color: var(--muted); font-size: 12px; padding: 30px 20px; border-top: 1px solid var(--line); margin-top: auto; }
 footer p { margin: 0; }
 .hidden { display: none !important; }
 
 @media(max-width: 768px) {
-  .shell { padding: 24px 16px 40px; }
+  .shell { padding: 20px 16px 40px; }
   .input-row, .folder-head, .actions { flex-direction: column; align-items: stretch; }
   .stats { grid-template-columns: 1fr; gap: 10px; }
 }
