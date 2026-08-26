@@ -236,3 +236,36 @@ footer p { margin: 0; }
   .input-row, .folder-head, .actions { flex-direction: column; align-items: stretch; }
   .stats { grid-template-columns: 1fr; gap: 10px; }
 }
+
+
+/* Penyesuaian Brand Header untuk DEJEDE Photo & Video */
+.brand { 
+  display: flex; 
+  align-items: center; 
+  gap: 12px; 
+}
+
+.brand strong { 
+  display: block; 
+  font-size: 15px; /* Dibuat pas, tidak terlalu besar */
+  letter-spacing: -0.01em; 
+  line-height: 1.2;
+}
+
+.brand small.brand-contact { 
+  display: block; 
+  color: var(--muted); 
+  font-size: 11px; /* Ukuran kontak proporsional */
+  font-weight: 500;
+  margin-top: 3px; 
+}
+
+/* Responsif untuk layar HP kecil agar tidak terpotong */
+@media(max-width: 480px) {
+  .brand strong {
+    font-size: 14px;
+  }
+  .brand small.brand-contact {
+    font-size: 10px;
+  }
+}
