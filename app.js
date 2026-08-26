@@ -1,4 +1,4 @@
-const GAS_URL = "https://script.google.com/macros/s/AKfycbxk2EpeVAN8tNavYa-33OtoiUANPk7OJeMkEVhPEljO3cOLVepoQeMHKzjsp6lqtCds/exec";
+const GAS_URL = "https://script.google.com/macros/s/AKfycbw1aSwmZ2SVCqvrwezYsSNxZp0BTeu30oI7WzUjEYMiwR4L23kjttpl6wxJLwct18_T/exec";
 
 const $ = id => document.getElementById(id);
 
