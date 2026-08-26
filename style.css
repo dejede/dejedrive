@@ -168,8 +168,17 @@ button:disabled { opacity: 0.5; cursor: not-allowed; }
 
 .hero { max-width: 700px; margin-bottom: 28px; }
 .eyebrow { font-size: 11px; font-weight: 800; letter-spacing: 0.15em; color: var(--primary); margin-bottom: 8px; }
-h1 { font-size: clamp(28px, 5vw, 42px); line-height: 1.1; letter-spacing: -0.03em; margin: 0 0 12px; }
-h1 span { color: var(--primary); }
+h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin: 0 0 12px;
+  color: var(--text); /* Warna teks utama untuk "Google Drive" */
+}
+
+h1 span.highlight-text { 
+  color: var(--primary); /* Menggunakan warna Sage Green utama untuk kata "Downloader" */
+}
 .hero p { font-size: 15px; color: var(--muted); margin: 0; }
 
 .card {
