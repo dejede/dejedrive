@@ -1,6 +1,6 @@
 // DEJEDE GDrive Downloader — GitHub Pages frontend
 // Replace this URL after deploying Code.gs as a Google Apps Script Web App.
-const GAS_URL = "PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
+const GAS_URL = "https://script.google.com/macros/s/AKfycbxk2EpeVAN8tNavYa-33OtoiUANPk7OJeMkEVhPEljO3cOLVepoQeMHKzjsp6lqtCds/exec";
 
 const $ = id => document.getElementById(id);
 let files=[], failed=[], targetDir=null;
