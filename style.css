@@ -63,10 +63,36 @@ button:disabled { opacity: 0.5; cursor: not-allowed; }
   backdrop-filter: blur(10px);
 }
 
-.brand { display: flex; align-items: center; gap: 12px; }
-.brand-logo { width: 40px; height: 40px; border-radius: 12px; object-fit: cover; box-shadow: 0 4px 12px rgba(59,110,81,0.2); }
-.brand strong { display: block; font-size: 16px; letter-spacing: -0.01em; }
-.brand small { display: block; color: var(--muted); font-size: 11px; }
+.brand { 
+  display: flex; 
+  align-items: center; 
+  gap: 12px; 
+}
+
+/* Membuat logo tampil murni rata / flat (tanpa radius sudut dan tanpa bayangan) */
+.brand-logo { 
+  width: 40px; 
+  height: 40px; 
+  border-radius: 0 !important; /* Menghilangkan sudut lengkung */
+  box-shadow: none !important;  /* Menghilangkan efek bayangan */
+  object-fit: contain;        /* Menjaga proporsi asli logo tanpa terpotong */
+  background: transparent;     /* Memastikan latar belakang logo transparan/flat */
+}
+
+.brand strong { 
+  display: block; 
+  font-size: 15px; 
+  letter-spacing: -0.01em; 
+  line-height: 1.2;
+}
+
+.brand small.brand-contact { 
+  display: block; 
+  color: var(--muted); 
+  font-size: 11px; 
+  font-weight: 500;
+  margin-top: 3px;
+}
 
 .topbar-actions { display: flex; align-items: center; gap: 12px; }
 .backend-badge {
