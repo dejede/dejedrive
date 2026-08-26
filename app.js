@@ -78,16 +78,16 @@ function progress(done, total, label) {
 async function checkBackend() {
   const badge = $("backendStatus");
   badge.className = "backend-badge checking";
-  badge.textContent = "Checking server...";
+  badge.textContent = "Checking...";
   try {
     const d = await api("health");
     backendOnline = true;
     badge.className = "backend-badge online";
-    badge.textContent = `Server Online (${d.version || "1.0.2"})`;
+    badge.textContent = `Online (${d.version || "1.0.2"})`;
   } catch (e) {
     backendOnline = false;
     badge.className = "backend-badge offline";
-    badge.textContent = "Server Offline";
+    badge.textContent = "Offline";
   }
 }
 
