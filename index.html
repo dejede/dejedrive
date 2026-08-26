@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#0b1220">
   <meta name="description" content="DEJEDE GDrive Downloader — Fast, Simple, and Structured Google Drive Downloader.">
-  <title>DEJEDE GDrive Downloader</title>
+  <title>DEJEDE | Photo & Video - GDrive Downloader Suite</title>
   <link rel="icon" href="assets/logo.png" type="image/png">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -20,11 +20,11 @@
       <img src="assets/logo.png" alt="Logo" class="brand-logo">
       <div>
         <strong>DEJEDE</strong>
-        <small>GDrive Downloader Suite</small>
+        <small>Photo & Video Studio</small>
       </div>
     </div>
     <div class="topbar-actions">
-      <span id="backendStatus" class="backend-badge checking">Checking server...</span>
+      <span id="backendStatus" class="backend-badge checking">Checking...</span>
       <button id="themeBtn" class="icon-btn" aria-label="Ganti tema">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
       </button>
@@ -32,10 +32,22 @@
   </header>
 
   <main class="shell">
+    <!-- Banner Informasi Usaha & Ucapan Terimakasih -->
+    <section class="card business-banner">
+      <div class="banner-content">
+        <span class="badge-studio">VENDOR DOKUMENTASI RESMI</span>
+        <h2>DEJEDE PHOTO & VIDEO</h2>
+        <p class="contact-info">📍 Lumajang, Jawa Timur &nbsp;|&nbsp; ☎️ 085236578999</p>
+        <p class="thank-you-text">
+          Terimakasih telah menggunakan jasa DEJEDE sebagai vendor dokumentasi. Silakan unduh file hasil dokumentasi acara Anda melalui tautan di bawah ini dengan lebih mudah, cepat, dan terstruktur.
+        </p>
+      </div>
+    </section>
+
     <section class="hero">
       <div class="eyebrow">🚀 FAST • SECURE • STRUCTURED</div>
-      <h1>Download Google Drive<br><span>Lebih Rapi & Terstruktur.</span></h1>
-      <p>Tempel tautan folder Google Drive Anda, biarkan sistem memindai struktur foldernya secara instan, dan unduh dengan aman.</p>
+      <h1>Google Drive<br><span>Downloader Suite</span></h1>
+      <p>Tempel tautan folder Google Drive Anda, biarkan sistem memindai struktur foldernya secara instan.</p>
     </section>
 
     <section class="card input-card">
@@ -47,7 +59,7 @@
         </div>
         <button id="pasteBtn" class="secondary">Paste</button>
         <button id="scanBtn" class="primary">
-          <span>Scan Folder</span>
+          <span>Scan</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
         </button>
       </div>
@@ -87,13 +99,13 @@
         <div id="detail" class="hint">Struktur siap diproses. Klik tombol download di bawah.</div>
       </section>
 
-      <div class="actions">
+      <main-actions class="actions">
         <button id="downloadBtn" class="primary big">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
           Download Semua File
         </button>
         <button id="retryBtn" class="secondary big" disabled>↻ Ulangi Gagal</button>
-      </div>
+      </main-actions>
 
       <section class="card">
         <div class="section-head">
@@ -108,7 +120,7 @@
   </main>
 
   <footer>
-    <p>DEJEDE GDrive Downloader &copy; 2026 · Fast, Simple, & Structured.</p>
+    <p>DEJEDE Photo & Video Suite &copy; 2026 · Lumajang, Jawa Timur.</p>
   </footer>
 
   <script src="app.js"></script>
