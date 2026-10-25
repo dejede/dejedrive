@@ -1,306 +1,93 @@
-:root {
-  --bg: #f4f7f5;
-  --panel: #ffffff;
-  --text: #1b2e23;
-  --muted: #5a7364;
-  --line: #d8e2dc;
-  --primary: #3b6e51;       /* Sage Green Utama */
-  --primary-hover: #2f5841; /* Sage Green Gelap */
-  --primary-light: #e8f0ec; /* Sage Green Sangat Muda */
-  --success: #2d8a56;
-  --danger: #d9534f;
-  --radius: 20px;
-  --shadow: 0 10px 30px -5px rgba(59, 110, 81, 0.08), 0 0 1px 1px rgba(59, 110, 81, 0.05);
+:root{--bg:#f4f7f5;--panel:#fff;--text:#1b2e23;--muted:#5a7364;--line:#d8e2dc;--primary:#3b6e51;--primary-h:#2f5841;--primary-l:#e8f0ec;--ok:#2d8a56;--danger:#c9433f;--r:16px;--sh:0 8px 24px -8px rgba(59,110,81,.14);color-scheme:light}
+:root.dark{--bg:#111a14;--panel:#1a281f;--text:#eaf2ed;--muted:#9ab3a4;--line:#294031;--primary:#55916f;--primary-h:#6aa887;--primary-l:rgba(85,145,111,.16);--danger:#e06d69;--sh:0 8px 24px -8px rgba(0,0,0,.5);color-scheme:dark}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100dvh;display:flex;flex-direction:column;overflow-x:hidden}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer;border:0;background:none}
+button:disabled{opacity:.5;cursor:not-allowed}
+:focus-visible{outline:3px solid var(--primary);outline-offset:2px}
+.hidden{display:none!important}
+.topbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:10px;background:color-mix(in srgb,var(--panel) 92%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding:calc(10px + env(safe-area-inset-top)) max(16px,env(safe-area-inset-right),calc((100% - 1100px)/2)) 10px max(16px,env(safe-area-inset-left),calc((100% - 1100px)/2))}
+.brand{display:flex;align-items:center;gap:10px;min-width:0}
+.brand-logo{width:42px;height:34px;object-fit:contain;flex:none}
+.brand strong{display:block;font-size:14px;line-height:1.2;white-space:nowrap}
+.brand small{display:block;color:var(--muted);font-size:11px;white-space:nowrap}
+.topbar-actions{display:flex;align-items:center;gap:8px;flex:none}
+.badge{font-size:11px;font-weight:600;padding:8px 11px;border-radius:99px;min-height:36px;background:var(--primary-l);color:var(--primary)}
+.badge.checking{color:#b45309;background:rgba(234,179,8,.14)}
+.badge.online{color:var(--ok);background:rgba(45,138,86,.12)}
+.badge.offline{color:var(--danger);background:rgba(201,67,63,.12)}
+.icon-btn{width:44px;height:44px;display:grid;place-items:center;border:1px solid var(--line);border-radius:12px;background:var(--panel)}
+.offline{background:var(--danger);color:#fff;text-align:center;padding:8px 16px;font-size:13px}
+.shell{width:100%;max-width:1100px;margin:0 auto;padding:24px max(16px,env(safe-area-inset-left)) 40px;flex:1}
+.hero{margin-bottom:20px}
+h1{font-size:clamp(26px,6vw,40px);line-height:1.12;letter-spacing:-.03em;margin:0 0 8px}
+.hero p{margin:0;color:var(--muted)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:18px;box-shadow:var(--sh);margin-bottom:16px}
+label{display:block;font-weight:600;font-size:13px;margin-bottom:8px}
+.input-row{display:flex;gap:10px}
+input[type=url],input[type=search],select{width:100%;min-height:48px;padding:10px 14px;border:1px solid var(--line);border-radius:12px;background:var(--bg);font-size:16px;outline:0}
+input[type=url]:focus,input[type=search]:focus,select:focus{border-color:var(--primary);box-shadow:0 0 0 4px var(--primary-l)}
+.btn-row{display:flex;gap:10px;flex:none}
+.primary,.secondary{min-height:48px;padding:10px 20px;border-radius:12px;font-weight:600;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:background .15s}
+.primary{background:var(--primary);color:#fff}
+.primary:hover:not(:disabled){background:var(--primary-h)}
+.secondary{background:var(--panel);border:1px solid var(--line)}
+.secondary:hover:not(:disabled){background:var(--primary-l)}
+.full{width:100%;margin-top:12px}
+.spin{display:none;width:16px;height:16px;border:2px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:sp .7s linear infinite}
+.loading .spin{display:block}
+@keyframes sp{to{transform:rotate(360deg)}}
+.msg{margin:10px 0 0;font-size:13px;color:var(--muted);min-height:1.2em}
+.msg.err{color:var(--danger)}
+.recent{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.chip{max-width:100%;padding:8px 12px;border-radius:99px;border:1px solid var(--line);background:var(--bg);font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.folder-head{margin:24px 0 12px}
+.folder-head small{color:var(--primary);font-weight:700;font-size:12px}
+h2{margin:2px 0 0;font-size:22px;letter-spacing:-.02em;word-break:break-word}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:12px 14px}
+.stat span{display:block;color:var(--muted);font-size:12px}
+.stat strong{font-size:18px}
+.progress-head{display:flex;justify-content:space-between;font-weight:600}
+.progress{height:10px;background:var(--line);border-radius:99px;overflow:hidden;margin-top:10px}
+.progress div{height:100%;width:0;background:var(--primary);border-radius:99px;transition:width .3s}
+.hint{font-size:13px;color:var(--muted);margin-top:10px;word-break:break-word}
+.tools{display:flex;gap:10px;margin-bottom:12px}
+.tools select{width:auto;flex:none}
+.check-all{display:flex;align-items:center;gap:10px;padding:6px 4px 10px;border-bottom:1px solid var(--line);margin:0;font-size:13px}
+input[type=checkbox]{width:22px;height:22px;accent-color:var(--primary);flex:none}
+.file{display:flex;align-items:center;gap:10px;padding:10px 4px;border-bottom:1px solid var(--line)}
+.file:last-child{border:0}
+.file label{display:flex;align-items:center;gap:10px;margin:0;flex:1;min-width:0;font-weight:400;cursor:pointer}
+.fi{font-size:20px;flex:none}
+.ft{min-width:0}
+.fn{display:block;font-weight:600;font-size:14px;word-break:break-word}
+.fp{display:block;color:var(--muted);font-size:12px;word-break:break-all}
+.size{color:var(--muted);font-size:12px;white-space:nowrap}
+.dl{width:44px;height:44px;border-radius:12px;border:1px solid var(--line);display:grid;place-items:center;flex:none;font-size:18px;background:var(--panel)}
+.empty{padding:20px 0;text-align:center;color:var(--muted)}
+.errors{border-color:rgba(201,67,63,.4);color:var(--danger)}
+.errors div{padding:8px 0;border-top:1px solid rgba(201,67,63,.2);font-size:13px;word-break:break-all}
+.actions{position:sticky;bottom:0;z-index:40;display:flex;gap:10px;padding:12px 0 calc(12px + env(safe-area-inset-bottom));background:linear-gradient(transparent,var(--bg) 30%)}
+.big{flex:1}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:20px 16px calc(20px + env(safe-area-inset-bottom));border-top:1px solid var(--line)}
+footer p{margin:0}
+.toast{position:fixed;left:50%;bottom:calc(90px + env(safe-area-inset-bottom));transform:translate(-50%,20px);max-width:calc(100% - 32px);background:var(--text);color:var(--bg);padding:10px 16px;border-radius:12px;font-size:13px;opacity:0;pointer-events:none;transition:.25s;z-index:99}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:640px){
+  .brand small,.badge{font-size:10px}
+  .input-row{flex-direction:column}
+  .btn-row>*{flex:1}
+  .card{padding:14px}
+  .stat strong{font-size:15px}
+  .stats{gap:8px}
+  .stat{padding:10px}
+  .tools{flex-direction:column}
+  .tools select{width:100%}
+  .file{flex-wrap:wrap}
+  .size{margin-left:32px}
 }
-
-body.dark {
-  --bg: #111a14;
-  --panel: #1a281f;
-  --text: #eaf2ed;
-  --muted: #9ab3a4;
-  --line: #294031;
-  --primary: #55916f;       /* Sage Green Terang untuk Mode Gelap */
-  --primary-hover: #3b6e51;
-  --primary-light: rgba(85, 145, 111, 0.15);
-  --shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5), 0 0 1px 1px rgba(255, 255, 255, 0.05);
-}
-
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--text);
-  font: 15px/1.6 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  overflow-x: hidden;
-}
-
-/* Background gradient glowing blobs bernuansa segar */
-.bg-blobs { position: fixed; inset: 0; pointer-events: none; z-index: -1; opacity: 0.5; filter: blur(80px); }
-.blob { position: absolute; width: 400px; height: 400px; border-radius: 50%; }
-.blob-1 { top: -100px; left: -100px; background: rgba(59, 110, 81, 0.15); }
-.blob-2 { bottom: -100px; right: -100px; background: rgba(120, 165, 140, 0.1); }
-
-button, input { font: inherit; }
-button { cursor: pointer; border: none; background: none; }
-button:disabled { opacity: 0.5; cursor: not-allowed; }
-
-.topbar {
-  height: 76px;
-  background: var(--panel);
-  border-bottom: 1px solid var(--line);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 max(24px, calc((100% - 1100px) / 2));
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  backdrop-filter: blur(10px);
-}
-
-.brand { 
-  display: flex; 
-  align-items: center; 
-  gap: 12px; 
-}
-
-/* Membuat logo tampil murni rata / flat (tanpa radius sudut dan tanpa bayangan) */
-.brand-logo { 
-  width: 40px; 
-  height: 40px; 
-  border-radius: 0 !important; /* Menghilangkan sudut lengkung */
-  box-shadow: none !important;  /* Menghilangkan efek bayangan */
-  object-fit: contain;        /* Menjaga proporsi asli logo tanpa terpotong */
-  background: transparent;     /* Memastikan latar belakang logo transparan/flat */
-}
-
-.brand strong { 
-  display: block; 
-  font-size: 15px; 
-  letter-spacing: -0.01em; 
-  line-height: 1.2;
-}
-
-.brand small.brand-contact { 
-  display: block; 
-  color: var(--muted); 
-  font-size: 11px; 
-  font-weight: 500;
-  margin-top: 3px;
-}
-
-.topbar-actions { display: flex; align-items: center; gap: 12px; }
-.backend-badge {
-  font-size: 11px;
-  font-weight: 600;
-  padding: 5px 10px;
-  border-radius: 20px;
-  background: var(--primary-light);
-  color: var(--primary);
-}
-.backend-badge.checking { background: rgba(234, 179, 8, 0.1); color: #d97706; }
-.backend-badge.online { background: rgba(45, 138, 86, 0.1); color: var(--success); }
-.backend-badge.offline { background: rgba(217, 83, 79, 0.1); color: var(--danger); }
-
-.icon-btn {
-  background: var(--panel);
-  color: var(--text);
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  width: 44px;
-  height: 44px;
-  display: grid;
-  place-items: center;
-  transition: all 0.2s;
-}
-.icon-btn:hover { background: var(--line); }
-
-.shell { max-width: 1100px; width: 100%; margin: auto; padding: 30px 20px 60px; flex: 1; }
-
-/* Banner Identitas Usaha & Ucapan Terimakasih */
-.business-banner {
-  background: linear-gradient(135deg, var(--primary-light), var(--panel));
-  border-left: 4px solid var(--primary);
-  position: relative;
-  overflow: hidden;
-  margin-bottom: 24px;
-}
-
-.badge-studio {
-  display: inline-block;
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  color: var(--primary);
-  background: var(--panel);
-  padding: 4px 10px;
-  border-radius: 20px;
-  margin-bottom: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-}
-
-.business-banner h2 {
-  font-size: 20px;
-  font-weight: 800;
-  letter-spacing: -0.01em;
-  margin: 0 0 6px 0;
-}
-
-.contact-info {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text);
-  margin: 0 0 12px 0;
-  opacity: 0.9;
-}
-
-.thank-you-text {
-  font-size: 13px;
-  color: var(--muted);
-  line-height: 1.5;
-  margin: 0;
-}
-
-.hero { max-width: 700px; margin-bottom: 28px; }
-.eyebrow { font-size: 11px; font-weight: 800; letter-spacing: 0.15em; color: var(--primary); margin-bottom: 8px; }
-h1 {
-  font-size: clamp(28px, 5vw, 42px);
-  line-height: 1.1;
-  letter-spacing: -0.03em;
-  margin: 0 0 12px;
-  color: var(--text); /* Warna teks utama untuk "Google Drive" */
-}
-
-h1 span.highlight-text { 
-  color: var(--primary); /* Menggunakan warna Sage Green utama untuk kata "Downloader" */
-}
-.hero p { font-size: 15px; color: var(--muted); margin: 0; }
-
-.card {
-  background: var(--panel);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 22px;
-  box-shadow: var(--shadow);
-  margin-bottom: 20px;
-  transition: transform 0.2s;
-}
-
-label { font-weight: 600; font-size: 13px; display: block; margin-bottom: 8px; }
-.input-row { display: flex; gap: 10px; }
-.input-wrapper { flex: 1; position: relative; display: flex; align-items: center; }
-.input-icon { position: absolute; left: 14px; color: var(--muted); pointer-events: none; }
-
-input {
-  width: 100%;
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  min-height: 48px;
-  padding: 12px 14px 12px 44px;
-  outline: none;
-  background: var(--bg);
-  color: var(--text);
-  font-size: 14px;
-  transition: all 0.2s;
-}
-input:focus { border-color: var(--primary); box-shadow: 0 0 0 4px var(--primary-light); background: var(--panel); }
-
-.primary, .secondary {
-  border-radius: 14px;
-  min-height: 48px;
-  padding: 12px 20px;
-  font-weight: 600;
-  font-size: 14px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  transition: all 0.2s;
-}
-.primary { background: var(--primary); color: #fff; box-shadow: 0 4px 12px rgba(59, 110, 81, 0.25); }
-.primary:hover:not(:disabled) { background: var(--primary-hover); transform: translateY(-1px); }
-.secondary { background: var(--panel); border: 1px solid var(--line); color: var(--text); }
-.secondary:hover:not(:disabled) { background: var(--line); }
-
-.folder-head { display: flex; justify-content: space-between; align-items: flex-end; margin: 32px 0 16px; }
-h2 { margin: 0; font-size: 22px; letter-spacing: -0.02em; word-break: break-word; }
-
-.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 20px; }
-.stat { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; display: flex; align-items: center; gap: 12px; box-shadow: var(--shadow); }
-.stat-icon { width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center; font-size: 18px; background: var(--primary-light); }
-.stat span { display: block; color: var(--muted); font-size: 11px; font-weight: 500; }
-.stat strong { display: block; font-size: 18px; letter-spacing: -0.02em; }
-
-.progress-card { background: var(--panel); }
-.progress-head { display: flex; justify-content: space-between; font-weight: 600; font-size: 14px; }
-.progress { height: 10px; background: var(--line); border-radius: 99px; overflow: hidden; margin-top: 12px; }
-.progress > div { height: 100%; width: 0; background: var(--primary); transition: width 0.3s ease; border-radius: 99px; }
-.hint { font-size: 13px; color: var(--muted); margin-top: 10px; }
-
-.actions { display: flex; gap: 12px; margin-bottom: 20px; }
-.big { flex: 1; padding: 15px; font-size: 15px; }
-
-.section-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; font-size: 14px; }
-.muted { color: var(--muted); font-size: 12px; }
-
-.file-list { max-height: 420px; overflow-y: auto; padding-right: 4px; }
-.file-list::-webkit-scrollbar { width: 6px; }
-.file-list::-webkit-scrollbar-thumb { background: var(--line); border-radius: 99px; }
-
-.file { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-bottom: 1px solid var(--line); font-size: 13px; border-radius: 8px; transition: background 0.15s; }
-.file:hover { background: var(--bg); }
-.file:last-child { border-bottom: none; }
-.path { word-break: break-all; flex: 1; font-family: ui-monospace, monospace; }
-.size { margin-left: auto; color: var(--muted); white-space: nowrap; font-size: 12px; }
-
-.errors { color: var(--danger); border-color: rgba(217, 83, 79, 0.3); background: rgba(217, 83, 79, 0.03); }
-.error-row { padding: 8px 0; border-bottom: 1px solid rgba(217, 83, 79, 0.15); font-size: 13px; }
-.error-row:last-child { border-bottom: none; }
-
-footer { text-align: center; color: var(--muted); font-size: 12px; padding: 30px 20px; border-top: 1px solid var(--line); margin-top: auto; }
-footer p { margin: 0; }
-.hidden { display: none !important; }
-
-@media(max-width: 768px) {
-  .shell { padding: 20px 16px 40px; }
-  .input-row, .folder-head, .actions { flex-direction: column; align-items: stretch; }
-  .stats { grid-template-columns: 1fr; gap: 10px; }
-}
-
-
-/* Penyesuaian Brand Header untuk DEJEDE Photo & Video */
-.brand { 
-  display: flex; 
-  align-items: center; 
-  gap: 12px; 
-}
-
-.brand strong { 
-  display: block; 
-  font-size: 15px; /* Dibuat pas, tidak terlalu besar */
-  letter-spacing: -0.01em; 
-  line-height: 1.2;
-}
-
-.brand small.brand-contact { 
-  display: block; 
-  color: var(--muted); 
-  font-size: 11px; /* Ukuran kontak proporsional */
-  font-weight: 500;
-  margin-top: 3px; 
-}
-
-/* Responsif untuk layar HP kecil agar tidak terpotong */
-@media(max-width: 480px) {
-  .brand strong {
-    font-size: 14px;
-  }
-  .brand small.brand-contact {
-    font-size: 10px;
-  }
-}
+@media(max-width:360px){.brand small{display:none}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation-duration:.01ms!important;scroll-behavior:auto!important}}
