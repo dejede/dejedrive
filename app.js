@@ -106,7 +106,7 @@ async function scan() {
     msg(`Selesai: ${files.length} file ditemukan.`);
     const rec = store.get("dejede-recent", []).filter(x => x.id !== id);
     rec.unshift({ id, name: d.name || "Folder", url: raw.trim() }); store.set("dejede-recent", rec.slice(0, 5)); renderRecent();
-    $("result").scrollIntoView({ behavior: "smooth", block: "start" });
+    $("navFiles").disabled = false; setView("files");
   } catch (e) { msg(e.message, true); }
   finally { $("scanBtn").disabled = false; $("scanBtn").classList.remove("loading"); $("scanLabel").textContent = "Pindai"; }
 }
@@ -184,6 +184,14 @@ async function downloadAll(list) {
   updateSel();
 }
 window.addEventListener("beforeunload", e => { if (busy) { e.preventDefault(); e.returnValue = ""; } });
+
+/* ---------- navigasi ---------- */
+function setView(v) {
+  document.body.dataset.view = v;
+  document.querySelectorAll(".nav button").forEach(b => b.classList.toggle("on", b.dataset.v === v));
+  scrollTo({ top: 0 });
+}
+document.querySelector(".nav").onclick = e => { const b = e.target.closest("[data-v]"); if (b && !b.disabled) setView(b.dataset.v); };
 
 /* ---------- event ---------- */
 $("scanBtn").onclick = scan;
